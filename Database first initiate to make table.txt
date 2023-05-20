@@ -1,0 +1,14 @@
+CREATE SEQUENCE IF NOT EXISTS movie_pkey_seq;
+CREATE TABLE "movie" (
+	id          BIGINT NOT NULL DEFAULT nextval('movie_pkey_seq'::regclass),
+    title       VARCHAR(256),
+    description VARCHAR(256),
+    duration 	VARCHAR(256),
+    artists		text,
+    genres 		text,
+    watch_url	text,
+    created_at  TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted     BOOLEAN DEFAULT FALSE,
+	CONSTRAINT pk_movie_id primary key (id)
+);

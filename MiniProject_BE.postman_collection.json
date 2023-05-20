@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "3c554902-bd52-47df-b98d-027fb272a539",
+		"name": "MiniProject_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14320309"
+	},
+	"item": [
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "InsertMovie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test\",\r\n    \"description\": \"testaja\",\r\n    \"duration\": \"08:99\",\r\n    \"artists\": \"al afif\",\r\n    \"genres\": \"romance\",\r\n    \"watch_url\": \"https://translate.google.com/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"test\",\r\n    \"description\": \"testaja\",\r\n    \"duration\": \"08:99\",\r\n    \"artists\": \"al afif\",\r\n    \"genres\": \"romance\",\r\n    \"watch_url\": \"https://translate.google.com/\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/movie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 04:39:55 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "132"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":{\"id\":2,\"inserted_at\":\"2023-05-20T11:39:54.6577713+07:00\"},\"message\":\"Data Berhasil Di Tambahkan\"}\n"
+						}
+					]
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"testlagi\",\r\n    \"description\": \"testajalagi\",\r\n    \"duration\": \"08:99\",\r\n    \"artists\": \"al afif\",\r\n    \"genres\": \"romance\",\r\n    \"watch_url\": \"https://translate.google.com/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/movie/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"movie",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example1",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"testlagi\",\r\n    \"description\": \"testajalagi\",\r\n    \"duration\": \"08:99\",\r\n    \"artists\": \"al afif\",\r\n    \"genres\": \"romance\",\r\n    \"watch_url\": \"https://translate.google.com/\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/movie/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 04:40:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":{\"id\":2,\"updated_at\":\"2023-05-20T11:40:04.0538464+07:00\"},\"message\":\"Data Berhasil Di Ubah\"}\n"
+						}
+					]
+				},
+				{
+					"name": "Get List Movie",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Get all data with pagination",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/movie?page=1&limit=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:32:18 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "575"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":[{\"id\":1,\"title\":\"testlagi\",\"description\":\"testajalagi\",\"duration\":\"08:99\",\"artists\":\"al\",\"genres\":\"romance\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:17:04.916934Z\",\"updated_at\":\"2023-05-20T11:37:48.933597Z\"},{\"id\":2,\"title\":\"testlagi\",\"description\":\"testaja\",\"duration\":\"08:12\",\"artists\":\"afif\",\"genres\":\"action\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:39:54.657771Z\",\"updated_at\":\"2023-05-20T11:40:04.053846Z\"}],\"message\":\"Pengambilan Data Berhasil\"}\n"
+						},
+						{
+							"name": "Get all data with pagination and filter by title",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/movie?page=1&limit=10&filter=title like lagi",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "filter",
+											"value": "title like lagi"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:33:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "326"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":[{\"id\":1,\"title\":\"testlagi\",\"description\":\"testajalagi\",\"duration\":\"08:99\",\"artists\":\"al\",\"genres\":\"romance\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:17:04.916934Z\",\"updated_at\":\"2023-05-20T11:37:48.933597Z\"}],\"message\":\"Pengambilan Data Berhasil\"}\n"
+						},
+						{
+							"name": "Get all data with pagination and filter by description",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/movie?page=1&limit=10&filter=description like lagi",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "filter",
+											"value": "description like lagi"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:34:15 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "326"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":[{\"id\":1,\"title\":\"testlagi\",\"description\":\"testajalagi\",\"duration\":\"08:99\",\"artists\":\"al\",\"genres\":\"romance\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:17:04.916934Z\",\"updated_at\":\"2023-05-20T11:37:48.933597Z\"}],\"message\":\"Pengambilan Data Berhasil\"}\n"
+						},
+						{
+							"name": "Get all data with pagination and filter by artists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/movie?page=1&limit=10&filter=artists like afif",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "filter",
+											"value": "artists like afif"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:35:24 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":[{\"id\":2,\"title\":\"test\",\"description\":\"testaja\",\"duration\":\"08:12\",\"artists\":\"afif\",\"genres\":\"action\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:39:54.657771Z\",\"updated_at\":\"2023-05-20T11:40:04.053846Z\"}],\"message\":\"Pengambilan Data Berhasil\"}\n"
+						},
+						{
+							"name": "Get all data with pagination and filter by genres",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/movie?page=1&limit=10&filter=genres like action",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"movie"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "filter",
+											"value": "genres like action"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:36:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\"status\":\"OK\",\"code\":200,\"data\":[{\"id\":2,\"title\":\"test\",\"description\":\"testaja\",\"duration\":\"08:12\",\"artists\":\"afif\",\"genres\":\"action\",\"watch_url\":\"https://translate.google.com/\",\"deleted\":\"\",\"created_at\":\"2023-05-20T11:39:54.657771Z\",\"updated_at\":\"2023-05-20T11:40:04.053846Z\"}],\"message\":\"Pengambilan Data Berhasil\"}\n"
+						}
+					]
+				}
+			]
+		}
+	]
+}
