@@ -3,13 +3,12 @@ package dao
 import (
 	"database/sql"
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"log"
 )
 
 const (
 	DB_USER     = "postgres"
-	DB_PASSWORD = "paramadaksa"
+	DB_PASSWORD = "testing"
 	DB_NAME     = "movie"
 )
 
@@ -39,14 +38,14 @@ func DBConnection() *sql.DB {
 	return db
 }
 
-func DbConn() {
-	_, err := gorm.Open("mysql", "root:paramadaksa@/dataset?charset=utf8&parseTime=True")
-	CheckError(err)
-
-	if err == nil {
-		log.Println("Connected!")
-	}
-}
+//func DbConn() {
+//	_, err := gorm.Open("mysql", "root:paramadaksa@/dataset?charset=utf8&parseTime=True")
+//	CheckError(err)
+//
+//	if err == nil {
+//		log.Println("Connected!")
+//	}
+//}
 
 func CheckError(err error) {
 	if err != nil {
