@@ -10,8 +10,8 @@ import (
 func ApiController() {
 	handle := mux.NewRouter()
 
-	//insert
-	handle.HandleFunc("/consumer/insert", endpoint.ConsumerEndpoint.ConsumerWithoutParam).Methods("POST")
+	handle.HandleFunc("/movie", endpoint.MovieEndpoint.MovieWithoutParam).Methods("POST", "GET")
+	handle.HandleFunc("/movie/{ID}", endpoint.MovieEndpoint.MovieWithParam).Methods("PUT")
 
 	log.Fatal(http.ListenAndServe(":9999", handle))
 }

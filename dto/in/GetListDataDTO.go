@@ -39,7 +39,7 @@ func (input *GetListDataDTO) ValidateGetListData(validSearchKey []string, validO
 func (input *GetListDataDTO) ValidateInputPageLimitAndOrderBy(validOrderBy []string) error {
 	input.OrderBy = strings.Trim(input.OrderBy, " ")
 	if input.OrderBy == "" {
-		input.OrderBy = validOrderBy[0]
+		input.OrderBy = "id"
 	} else {
 		err := input.validateOrderBySplit(validOrderBy)
 		if err != nil {
@@ -118,7 +118,6 @@ func (input GetListDataDTO) validateFilter(validSearchKey []string, validOperato
 				if operator == "in" {
 					errs := json.Unmarshal([]byte(searchValue), &inSearchValue)
 					if errs != nil {
-
 						err = errors.New("Format Filter error")
 						return
 					}
@@ -128,12 +127,6 @@ func (input GetListDataDTO) validateFilter(validSearchKey []string, validOperato
 				}
 
 				result = append(result, searchBy)
-
-				if !ValidateStringContainInStringArray(validSearchKey, searchKey) {
-
-					err = errors.New("Format Filter error")
-					return
-				}
 				if !isOperatorValid(searchKey, searchValue, operator, validOperator) {
 
 					err = errors.New("Format Filter error")

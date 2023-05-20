@@ -13,7 +13,7 @@ type movieService struct {
 	service.GetListData
 }
 
-var ConsumerService = movieService{}.New()
+var MovieService = movieService{}.New()
 
 func (input movieService) New() (output movieService) {
 	return

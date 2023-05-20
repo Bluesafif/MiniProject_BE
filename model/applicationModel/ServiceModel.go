@@ -9,6 +9,8 @@ var GetListMovieValidOperator map[string]DefaultOperator
 
 func InitiateDefaultOperator() {
 	GetListMovieValidOperator = make(map[string]DefaultOperator)
-	GetListMovieValidOperator["code"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
-	GetListMovieValidOperator["name"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
+	GetListMovieValidOperator["title"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
+	GetListMovieValidOperator["description"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
+	GetListMovieValidOperator["artists"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
+	GetListMovieValidOperator["genres"] = DefaultOperator{DataType: "char", Operator: []string{"like", "eq"}}
 }

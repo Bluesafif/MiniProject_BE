@@ -19,3 +19,8 @@ func (input *Movie) ValidateInsertMovie() (err error) {
 
 	return
 }
+
+func (input *Movie) ValidateUpdateMovie() (err error) {
+
+	return
+}

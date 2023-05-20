@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func (input movieService) InsertMovie(request *http.Request, response http.ResponseWriter) (err error) {
+func (input movieService) UpdateMovie(request *http.Request, response http.ResponseWriter) (err error) {
 	var (
 		result out.Response
 	)
@@ -23,7 +23,7 @@ func (input movieService) InsertMovie(request *http.Request, response http.Respo
 		return
 	}
 
-	output, errs := input.doInsertMovie(dao.DBConnection(), inputStruct, time.Now())
+	output, errs := input.doUpdateMovie(dao.DBConnection(), inputStruct, time.Now())
 	if errs != nil {
 		log.Fatal(errs)
 		return
@@ -31,15 +31,14 @@ func (input movieService) InsertMovie(request *http.Request, response http.Respo
 
 	result.Code = 200
 	result.Status = "OK"
-	result.Data = output.(out.DataInsert)
-	result.Message = "Data Berhasil Di Tambahkan"
+	result.Data = output.(out.DataUpdate)
+	result.Message = "Data Berhasil Di Ubah"
 	json.NewEncoder(response).Encode(result)
 	return
 }
 
-func (input movieService) doInsertMovie(tx *sql.DB, inputStructInterface interface{}, timeNow time.Time) (output interface{}, err error) {
+func (input movieService) doUpdateMovie(tx *sql.DB, inputStructInterface interface{}, timeNow time.Time) (output interface{}, err error) {
 	inputStruct := inputStructInterface.(in.Movie)
-	var ids int64
 
 	movieModel := repository.MovieModel{
 		ID:          sql.NullInt64{Int64: inputStruct.ID},
@@ -49,23 +48,22 @@ func (input movieService) doInsertMovie(tx *sql.DB, inputStructInterface interfa
 		Artists:     sql.NullString{String: inputStruct.Artists},
 		Genres:      sql.NullString{String: inputStruct.Genres},
 		WatchUrl:    sql.NullString{String: inputStruct.WatchUrl},
-		CreatedAt:   sql.NullTime{Time: timeNow},
 		UpdatedAt:   sql.NullTime{Time: timeNow},
 	}
 
-	ids, err = dao.InsertMovie(tx, movieModel)
+	err = dao.UpdateMovie(tx, movieModel)
 	if err != nil {
 		return
 	}
 
-	output = out.DataInsert{
-		Id:         ids,
-		InsertedAt: timeNow,
+	output = out.DataUpdate{
+		Id:        inputStruct.ID,
+		UpdatedAt: timeNow,
 	}
 	err = nil
 	return
 }
 
-func (input movieService) validateInsert(inputStruct *in.Movie) error {
-	return inputStruct.ValidateInsertMovie()
+func (input movieService) validateUpdate(inputStruct *in.Movie) error {
+	return inputStruct.ValidateUpdateMovie()
 }
